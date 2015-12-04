@@ -14,24 +14,12 @@ describe('#appendString', function() {
     assert.throws(appendString.bind(null, false), 'to be a string');
   });
 
-  it('appends the string to each chunk of the stream', function(done) {
-    var results = [];
-    var inputStream = new stream.Readable();
-    inputStream.push("one");
-    inputStream.push("two");
-    inputStream.push(null);
+  it('appends the string to each value yielded from the generator', function() {
+    var TAIL = ' for the win';
+    var appendStringGenerator = appendString(TAIL);;
 
-    var resultStream = new stream.Writable();
-    resultStream._write = function(buf, enc, cb) {
-      results.push(buf.toString());
-      cb(null);
-    };
-
-    inputStream.pipe(appendString('\n')).pipe(resultStream);
-
-    resultStream.on('finish', function() {
-      assert.deepEqual(results, ['one\n', 'two\n']);
-      done();
-    });
+    assert.strictEqual(appendStringGenerator.next('anything').value, 'anything' + TAIL);
+    assert.strictEqual(appendStringGenerator.next('nothing').value, 'nothing' + TAIL);
+    assert.strictEqual(appendStringGenerator.next('FTW').value, 'FTW' + TAIL);
   });
 });
