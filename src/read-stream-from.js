@@ -1,15 +1,15 @@
 'use strict';
 
-var assert = require('chai').assert;
-var ReadableStream = require('stream').Readable
+const assert = require('chai').assert;
+const ReadableStream = require('stream').Readable
 
 function readStreamFrom(generator) {
   assert.isFunction(generator.next);
 
-  var readStream = ReadableStream();
+  let readStream = ReadableStream();
 
   readStream._read = function() {
-    var next = generator.next();
+    const next = generator.next();
     readStream.push(next.value.toString());
 
     if (next.done) {
