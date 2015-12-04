@@ -1,31 +1,22 @@
 'use strict';
 
-var FibSequence = function() {
-  this._penultimate;
-  this._last;
-};
-
-FibSequence.prototype.next = function() {
-  var nextValue;
-
-  if (this._penultimate === undefined) {
-    this._penultimate = 0;
-    nextValue = 0;
-  } else if (this._last === undefined) {
-    this._last = 1;
-    nextValue = 1;
-  } else {
-    nextValue = this._penultimate + this._last;
-    this._penultimate = this._last;
-    this._last = nextValue;
-  }
-
-  return {
-    value: nextValue,
-    done: false
-  }
-};
-
 module.exports = function() {
-  return new FibSequence();
+  const generator = function* () {
+    let penultimate = 0;
+    let last = 1;
+    let current;
+
+    yield penultimate;
+    yield last;
+
+    while (true) {
+      current = penultimate + last;
+      yield current;
+
+      penultimate = last;
+      last = current;
+    }
+  }
+
+  return generator();
 }
