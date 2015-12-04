@@ -3,5 +3,5 @@
 From the root
 
 ```
-node index.js <numbers in sequence>
+babel-node index.js <numbers in sequence>
 ```

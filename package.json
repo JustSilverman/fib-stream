@@ -2,6 +2,8 @@
   "name": "fib-stream",
   "version": "0.0.1",
   "dependencies": {
+    "babel-register": "^6.3.13",
+    "babel-polyfill": "^6.2.0",
     "chai": "^3.4.1"
   },
   "devDependencies": {
@@ -12,5 +14,8 @@
   "scripts": {
     "test": "mocha test/**/*.js",
     "wach-test": "wach 'clear; mocha test/**/*.js'"
+  },
+  "babel": {
+    "presets": ["es2015"]
   }
 }
