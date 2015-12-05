@@ -3,8 +3,8 @@
 const assert = require('chai').assert;
 const limit = require('../src/limit');
 
-describe('#limit', function() {
-  it('yields the input until the limit has been reached using the generator interface', function() {
+describe('#limit', () => {
+  it('yields the input until the limit has been reached using the generator interface', () => {
     const limitIterator = limit(5);
 
     for (let i = 0; i < 5; i++) {
