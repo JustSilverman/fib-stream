@@ -1,8 +1,8 @@
 'use strict';
 
-const assert = require('chai').assert;
-const WritableStream = require('stream').Writable;
-const readStreamFrom = require('../src/read-stream-from');
+import { assert } from 'chai';
+import { Writable as WritableStream } from 'stream';
+import readStreamFrom from '../src/read-stream-from';
 
 describe('#readStreamFrom', () => {
   it('raises if passed something that does not implement the generator interface', () => {

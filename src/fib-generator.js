@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function() {
+export default function fibGenerator() {
   const generator = function* () {
     let penultimate = 0;
     let last = 1;

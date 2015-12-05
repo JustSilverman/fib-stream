@@ -1,7 +1,7 @@
 'use strict';
 
-const assert = require('chai').assert;
-const limit = require('../src/limit');
+import { assert } from 'chai';
+import limit from '../src/limit';
 
 describe('#limit', () => {
   it('yields the input until the limit has been reached using the generator interface', () => {

@@ -3,7 +3,7 @@
 const assert = require('chai').assert;
 const TransformStream = require('stream').Transform;
 
-function transformStreamFrom(generator) {
+export default function transformStreamFrom(generator) {
   assert.isFunction(generator.next);
 
   let transformStream = new TransformStream();
@@ -21,5 +21,3 @@ function transformStreamFrom(generator) {
 
   return transformStream;
 }
-
-module.exports = transformStreamFrom;

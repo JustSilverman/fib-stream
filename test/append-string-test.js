@@ -1,8 +1,7 @@
 'use strict';
 
-const assert = require('chai').assert;
-const stream = require('stream');
-const appendString = require('../src/append-string');
+import { assert } from 'chai';
+import appendString from '../src/append-string';
 
 describe('#appendString', () => {
   it('raises if not passed a string', () => {

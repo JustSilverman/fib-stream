@@ -3,7 +3,7 @@
 const assert = require('chai').assert;
 const TransformStream = require('stream').Transform
 
-function appendString(stringToAppend) {
+export default function appendString(stringToAppend) {
   assert.isString(stringToAppend);
 
   const appendGenerator = function* () {
@@ -17,5 +17,3 @@ function appendString(stringToAppend) {
   generator.next();
   return generator;
 }
-
-module.exports = appendString;

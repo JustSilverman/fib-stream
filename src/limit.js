@@ -1,6 +1,6 @@
 'use strict'
 
-function limit(n) {
+export default function limit(n) {
   const limitGenerator = function* (count) {
     let callCount = 0;
 
@@ -14,5 +14,3 @@ function limit(n) {
   generator.next();
   return generator;
 }
-
-module.exports = limit;

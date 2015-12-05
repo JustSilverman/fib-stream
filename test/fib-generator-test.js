@@ -1,7 +1,7 @@
 'use strict';
 
-const assert = require('chai').assert;
-const fibGenerator = require('../src/fib-generator');
+import { assert } from 'chai';
+import fibGenerator from '../src/fib-generator';
 
 describe('FibGenerator', () => {
   function assertNextValueAndDone(next, expectedValue) {

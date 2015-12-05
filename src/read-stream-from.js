@@ -1,9 +1,9 @@
 'use strict';
 
-const assert = require('chai').assert;
-const ReadableStream = require('stream').Readable
+import { assert } from 'chai';
+import { Readable as ReadableStream} from 'stream';
 
-function readStreamFrom(generator) {
+export default function readStreamFrom(generator) {
   assert.isFunction(generator.next);
 
   let readStream = ReadableStream();
@@ -20,5 +20,3 @@ function readStreamFrom(generator) {
 
   return readStream;
 }
-
-module.exports = readStreamFrom;

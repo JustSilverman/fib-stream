@@ -1,10 +1,10 @@
 'use strict';
 
-var transformStreamFrom = require('./src/transform-stream-from');
-var readStreamFrom = require('./src/read-stream-from');
-var fibGenerator = require('./src/fib-generator');
-var limit = require('./src/limit');
-var appendString = require('./src/append-string');
+import transformStreamFrom from './src/transform-stream-from';
+import readStreamFrom from './src/read-stream-from';
+import fibGenerator from './src/fib-generator';
+import limit from './src/limit';
+import appendString from './src/append-string';
 
 var elementsInSequence = process.argv[2];
 
