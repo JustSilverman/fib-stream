@@ -10,10 +10,11 @@ function readStreamFrom(generator) {
 
   readStream._read = function() {
     const next = generator.next();
-    readStream.push(next.value.toString());
 
     if (next.done) {
       readStream.push(null);
+    } else {
+      readStream.push(next.value.toString());
     }
   };
 
