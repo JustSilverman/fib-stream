@@ -1,38 +1,33 @@
 'use strict';
 
-var assert = require('chai').assert;
-var WritableStream = require('stream').Writable;
-var readStreamFrom = require('../src/read-stream-from');
+const assert = require('chai').assert;
+const WritableStream = require('stream').Writable;
+const readStreamFrom = require('../src/read-stream-from');
 
-describe('#readStreamFrom', function() {
-  it('raises if passed something that does not implement the generator interface', function() {
+describe('#readStreamFrom', () => {
+  it('raises if passed something that does not implement the generator interface', () => {
     assert.throws(readStreamFrom.bind(null, {}), 'to be a function');
   });
 
-  it('returns a readStream that reads the value of generator#next until done', function(done) {
-    var generator = {
-      counter: 0,
-      next: function() {
-        var value = this.counter;
-        var done = this.counter >= 3;
-        this.counter++;
-
-        return {
-          value: value,
-          done: done
-        }
+  it('returns a readStream that reads the value of generator#next until done', (done) => {
+    const generator = function* () {
+      let counter = 0;
+      while (counter <= 3) {
+        yield counter;
+        counter++;
       }
     }
 
-    var results = [];
-    var resultStream = new WritableStream();
-    resultStream._write = function(buf, enc, cb) {
+    const results = [];
+    const resultStream = new WritableStream();
+    resultStream._write = (buf, enc, cb) => {
       results.push(buf.toString());
       cb(null);
     };
 
-    readStreamFrom(generator).pipe(resultStream);
-    resultStream.on('finish', function() {
+
+    readStreamFrom(generator()).pipe(resultStream);
+    resultStream.on('finish', () => {
       assert.deepEqual(results, ["0", "1", "2", "3"]);
       done();
     });

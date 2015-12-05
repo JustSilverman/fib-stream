@@ -1,23 +1,23 @@
 'use strict';
 
-var assert = require('chai').assert;
-var fibGenerator = require('../src/fib-generator');
+const assert = require('chai').assert;
+const fibGenerator = require('../src/fib-generator');
 
-describe('FibGenerator', function() {
+describe('FibGenerator', () => {
   function assertNextValueAndDone(next, expectedValue) {
     assert.strictEqual(next.value, expectedValue);
     assert.isFalse(next.done);
   }
 
-  describe('#next', function() {
-    it('begins at the first number in the sequence', function() {
-      var generator = fibGenerator();
+  describe('#next', () => {
+    it('begins at the first number in the sequence', () => {
+      const generator = fibGenerator();
 
       assertNextValueAndDone(generator.next(), 0);
     });
 
-    it('returns the next number in the sequence', function() {
-      var generator = fibGenerator();
+    it('returns the next number in the sequence', () => {
+      const generator = fibGenerator();
 
       assertNextValueAndDone(generator.next(), 0);
       assertNextValueAndDone(generator.next(), 1);

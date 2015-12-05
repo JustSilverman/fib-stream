@@ -1,11 +1,11 @@
 'use strict';
 
-var assert = require('chai').assert;
-var stream = require('stream');
-var appendString = require('../src/append-string');
+const assert = require('chai').assert;
+const stream = require('stream');
+const appendString = require('../src/append-string');
 
-describe('#appendString', function() {
-  it('raises if not passed a string', function() {
+describe('#appendString', () => {
+  it('raises if not passed a string', () => {
     assert.throws(appendString.bind(null, null), 'to be a string');
     assert.throws(appendString.bind(null, undefined), 'to be a string');
     assert.throws(appendString.bind(null, 1), 'to be a string');
@@ -14,9 +14,9 @@ describe('#appendString', function() {
     assert.throws(appendString.bind(null, false), 'to be a string');
   });
 
-  it('appends the string to each value yielded from the generator', function() {
-    var TAIL = ' for the win';
-    var appendStringGenerator = appendString(TAIL);;
+  it('appends the string to each value yielded from the generator', () => {
+    const TAIL = ' for the win';
+    const appendStringGenerator = appendString(TAIL);;
 
     assert.strictEqual(appendStringGenerator.next('anything').value, 'anything' + TAIL);
     assert.strictEqual(appendStringGenerator.next('nothing').value, 'nothing' + TAIL);
