@@ -1,7 +1,7 @@
 'use strict';
 
 import { assert } from 'chai';
-import appendString from '../src/append-string';
+import appendString from '../../src/append-string';
 
 describe('#appendString', () => {
   it('raises if not passed a string', () => {

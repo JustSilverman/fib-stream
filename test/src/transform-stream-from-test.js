@@ -2,7 +2,7 @@
 
 import { assert } from 'chai';
 import * as stream from 'stream';
-import transformStreamFrom from '../src/transform-stream-from';
+import transformStreamFrom from '../../src/transform-stream-from';
 
 describe('#transformStreamFrom', () => {
   it('raises if passed something that does not implement the generator interface', () => {

@@ -1,7 +1,7 @@
 'use strict';
 
 import { assert } from 'chai';
-import limit from '../src/limit';
+import limit from '../../src/limit';
 
 describe('#limit', () => {
   it('yields the input until the limit has been reached using the generator interface', () => {

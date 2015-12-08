@@ -2,7 +2,7 @@
 
 import { assert } from 'chai';
 import { Writable as WritableStream } from 'stream';
-import readStreamFrom from '../src/read-stream-from';
+import readStreamFrom from '../../src/read-stream-from';
 
 describe('#readStreamFrom', () => {
   it('raises if passed something that does not implement the generator interface', () => {
@@ -18,18 +18,18 @@ describe('#readStreamFrom', () => {
       }
     }
 
-    const results = [];
-    const resultStream = new WritableStream();
-    resultStream._write = (buf, enc, cb) => {
-      results.push(buf.toString());
-      cb(null);
-    };
+   const results = [];
+   const resultStream = new WritableStream();
+   resultStream._write = (buf, enc, cb) => {
+     results.push(buf.toString());
+     cb(null);
+   };
 
 
-    readStreamFrom(generator()).pipe(resultStream);
-    resultStream.on('finish', () => {
-      assert.deepEqual(results, ["0", "1", "2", "3"]);
-      done();
-    });
-  });
+   readStreamFrom(generator()).pipe(resultStream);
+   resultStream.on('finish', () => {
+     assert.deepEqual(results, ["0", "1", "2", "3"]);
+     done();
+   });
+ });
 });

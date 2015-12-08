@@ -12,8 +12,8 @@
   },
   "private": true,
   "scripts": {
-    "test": "mocha test/**/*.js",
-    "wach-test": "wach 'clear; mocha test/**/*.js'"
+    "test": "mocha test/src/**/*.js",
+    "wach-test": "wach 'clear; mocha test/src/**/*.js'"
   },
   "babel": {
     "presets": ["es2015"]
