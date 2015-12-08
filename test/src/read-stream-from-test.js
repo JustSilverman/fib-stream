@@ -2,6 +2,7 @@
 
 import { assert } from 'chai';
 import { Writable as WritableStream } from 'stream';
+import assertStreamEquals from '../helpers/assert-stream-equals';
 import readStreamFrom from '../../src/read-stream-from';
 
 describe('#readStreamFrom', () => {
@@ -18,18 +19,7 @@ describe('#readStreamFrom', () => {
       }
     }
 
-   const results = [];
-   const resultStream = new WritableStream();
-   resultStream._write = (buf, enc, cb) => {
-     results.push(buf.toString());
-     cb(null);
-   };
-
-
-   readStreamFrom(generator()).pipe(resultStream);
-   resultStream.on('finish', () => {
-     assert.deepEqual(results, ["0", "1", "2", "3"]);
-     done();
-   });
- });
+    readStreamFrom(generator())
+      .pipe(assertStreamEquals(["0", "1", "2", "3"].join(''), done));
+  });
 });
